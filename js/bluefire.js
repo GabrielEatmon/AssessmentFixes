@@ -1,9 +1,10 @@
 $(function(){
-	$('#menu ul > li > a').on('click', function myFunction(){
-		if($('.menuopen').hasClass('menuopen')){            /*Added conditional statement to this function so the submenus don't automatically collapse*/ 
+	$('#menu ul > li > a').on('click', function(){
+		if($(this).parent().find('.submenu').hasClass('menuopen')){ /*Fixed the menu bug where the menu clicked wouldn't open if another menu was already open*/
 			$('.menuopen').slideUp(250).removeClass('menuopen');
 		}
 		else{
+			$('.menuopen').slideUp(250).removeClass('menuopen');
 			$(this).parent().find('.submenu').slideDown(250).addClass('menuopen');
 		}
 	});
@@ -15,7 +16,6 @@ $(function(){
 		else{
 			$('#menu').slideUp(0).removeClass('mainmenuopen');
 		}
-		
 	});
 	
 	$('#mobileMenuBtn').on('click', function(){
